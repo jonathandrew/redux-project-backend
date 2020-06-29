@@ -6,9 +6,7 @@ router.get("/", function (req, res, next) {
   res.send("this is the users route using get");
 });
 
-router.post("/signin", function (req, res, next) {
-  res.send("this is the users/login route using post");
-});
+router.post("/signin", userController.signIn);
 
 router.post("/signup", userController.signUp);
 
