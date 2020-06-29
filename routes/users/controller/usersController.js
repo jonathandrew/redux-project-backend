@@ -15,7 +15,7 @@ module.exports = {
       let hashedPassword = await bcrypt.hash(createdUser.password, genSalt);
 
       createdUser.password = hashedPassword;
-
+      console.log(createdUser);
       await createdUser.save();
 
       res.json({
