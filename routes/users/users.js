@@ -1,13 +1,22 @@
 var express = require("express");
 var router = express.Router();
-const userController = require("./controller/usersController");
+var userController = require("./controller/userController");
+var passport = require("passport");
 /* GET users listing. */
-router.get("/", function (req, res, next) {
-  res.send("this is the users route using get");
-});
 
-router.post("/signin", userController.signIn);
+router.get(
+  "/",
+  passport.authenticate("jwt-user", { session: false }),
+  function (req, res, next) {
+    console.log(req.user);
+    res.send("From User");
+  }
+);
 
 router.post("/sign-up", userController.signUp);
+
+router.post("/login", userController.login);
+
+router.post("/schedule-text", userController.scheduleText);
 
 module.exports = router;
