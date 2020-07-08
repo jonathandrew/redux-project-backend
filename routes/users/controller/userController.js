@@ -3,12 +3,6 @@ const bcrypt = require("bcryptjs");
 const dbErrorHelper = require("../../lib/dbErrorHelpers/dbErrorHelper");
 const jwtHelper = require("../authHelpers/jwtHelper");
 
-const twilio = require("twilio");
-const client = new twilio(
-  process.env.TWILIO_ACCOUNT_SID,
-  process.env.TWILIO_AUTH_TOKEN
-);
-
 module.exports = {
   signUp: async (req, res) => {
     try {
@@ -66,21 +60,7 @@ module.exports = {
       });
     }
   },
-  scheduleText: async (req, res) => {
-    try {
-      let success = await client.messages.create({
-        body: "Hello from Node",
-        to: "+19176261808", // Text this number
-        from: process.env.TWILIO_PHONE_NUMBER, // From a valid Twilio number
-      });
-      console.log("----");
-      console.log(success);
-      res.json(success);
-    } catch (e) {
-      console.log(e);
-      res.status(500).json({
-        message: dbErrorHelper(e),
-      });
-    }
+  test: (req, res) => {
+    res.send("works proper need to plug in req info");
   },
 };
