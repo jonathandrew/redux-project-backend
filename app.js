@@ -12,11 +12,6 @@ var xss = require("xss-clean");
 var compression = require("compression");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users/users");
-var friendsRouter = require("./routes/friends/friends");
-var appointmentsRouter = require("./routes/appointments/appointments");
-
-var schedulerFactory = require("./routes/lib/twilio/scheduleFactory");
-
 var passport = require("passport");
 var userJWTLoginStrategy = require("./routes/lib/passport/user-passport-auth");
 
@@ -91,8 +86,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", indexRouter);
 app.use("/api/users", usersRouter);
-app.use("/api/friends", friendsRouter);
-app.use("/api/appointments", appointmentsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -109,7 +102,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
-
-schedulerFactory.start();
 
 module.exports = app;
