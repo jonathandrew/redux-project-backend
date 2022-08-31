@@ -23,7 +23,7 @@
     "jade": "~1.11.0",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.27.0",
-    "moment-timezone": "^0.5.31",
+    "moment-timezone": "^0.5.35",
     "mongoose": "^5.9.20",
     "morgan": "^1.9.1",
     "node-cron": "^2.0.3",
